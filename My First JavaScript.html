@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>My First JavaScript</h1>
+        <button type = "button" onclick = "document.getElementById('t1').innerHTML = 'Hello World!'">Click me!</button>
+        <p id="t1"></p>
+        
+        <button type = "button" onclick = "document.getElementById('text').innerHTML = Date()">Show timestamp</button>
+        <p id="text"></p>
+
+        <img id = "lightbulb" src = "pic_bulboff.gif" style = "width:7%" />
+        <br />
+        <button onclick = "lightSwitch()">Light Switch</button>
+
+        <br /><br />
+        <button type = "button" onclick = "resizeText()">Change text size</button>
+        <p id="rText">resizable text</p>
+
+        <button type = "button" onclick = "showHideText()">
+            Show/Hide Text
+        </button>
+        <p id="showHide">Hello!</p>
+    </body>
+</html> 
+
+<script>
+    var lSwitchFlag = 0;
+    var rTextFlag = 0;
+    var sTextFlag = 0;
+
+    function lightSwitch(){
+        if(lSwitchFlag == 0){
+            document.getElementById("lightbulb").src = "pic_bulbon.gif";
+            lSwitchFlag++;
+        } else{
+            document.getElementById("lightbulb").src = "pic_bulboff.gif";
+            lSwitchFlag = 0;
+        }
+    }
+
+    function resizeText(){
+        if(rTextFlag == 0){
+            document.getElementById("rText").style.fontSize = "150%";
+            rTextFlag++;
+        } else{
+            document.getElementById("rText").style.fontSize = "100%";
+            rTextFlag = 0;
+        }
+    }
+
+    function showHideText(){
+        if(sTextFlag == 0){
+            document.getElementById("showHide").style.display = "none";
+            sTextFlag++;
+        } else{
+            document.getElementById("showHide").style.display = "block";
+            sTextFlag = 0;
+        }
+    }
+</script>

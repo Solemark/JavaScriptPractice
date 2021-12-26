@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+    <div>
+        <input type="text" maxlength="9" placeholder="Max of 9 numbers" id="numberInput">
+        <br />
+        <button type="button" onclick="numberToLetter()">submit</button>
+        <p id="textOutput"></p>
+    </div>
+</html>
+<style>
+    div {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+</style>
+<script>
+    var input;
+    var iArray;
+    var output;
+    function numberToLetter() {
+        input = "";
+        output = "";
+        iArray = [];
+        input = document.getElementById("numberInput").value;
+        for (var i = 0; i < input.length; i += 1) {
+            iArray.push(input.charAt(i));
+        }
+        while (iArray.length != 0) {
+            switch (iArray.length) {
+                case 1:
+                    findOnes(iArray[0]);
+                    break;
+                case 2:
+                    if (iArray[0] == 1) {
+                        findTeens(iArray[0] + iArray[1]);
+                        iArray.shift();
+                    } else {
+                        findTens(iArray[0]);
+                    }
+                    break;
+                case 3:
+                    findOnes(iArray[0]);
+                    output += "hundred ";
+                    if (iArray[1] != 0 || iArray[2] != 0) {
+                        output += "and ";
+                    }
+                    break;
+                case 4:
+                    findOnes(iArray[0]);
+                    output += "thousand ";
+                    break;
+                case 5:
+                    if (iArray[0] == 1) {
+                        findTeens(iArray[0] + iArray[1]);
+                        output += "thousand ";
+                        iArray.shift();
+                    } else {
+                        findTens(iArray[0]);
+                    }
+                    break;
+                case 6:
+                    findOnes(iArray[0]);
+                    output += "hundred ";
+                    if (iArray[1] != 0 || iArray[2] != 0) {
+                        output += "and ";
+                    }
+                    break;
+                case 7:
+                    findOnes(iArray[0]);
+                    output += "million ";
+                    break;
+                case 8:
+                    if (iArray[0] == 1) {
+                        findTeens(iArray[0] + iArray[1]);
+                        output += "million ";
+                        iArray.shift();
+                    } else {
+                        findTens(iArray[0]);
+                    }
+                    break;
+                case 9:
+                    findOnes(iArray[0]);
+                    output += "hundred ";
+                    if (iArray[1] != 0 || iArray[2] != 0) {
+                        output += "and ";
+                    }
+                    break;
+            }
+            iArray.shift();
+        }
+        display(output);
+    }
+    function findTens(int) {
+        switch (parseInt(int)) {
+            case 2:
+                output += "twenty ";
+                break;
+            case 3:
+                output += "thirty ";
+                break;
+            case 4:
+                output += "forty ";
+                break;
+            case 5:
+                output += "fifty ";
+                break;
+            case 6:
+                output += "sixty ";
+                break;
+            case 7:
+                output += "seventy ";
+                break;
+            case 8:
+                output += "eighty ";
+                break;
+            case 9:
+                output += "ninety ";
+                break;
+        }
+        return output;
+    }
+    function findTeens(int) {
+        switch (parseInt(int)) {
+            case 10:
+                output += "ten ";
+                break;
+            case 11:
+                output += "eleven ";
+                break
+            case 12:
+                output += "twelve ";
+                break;
+            case 13:
+                output += "thirteen ";
+                break;
+            case 14:
+                output += "fourteen ";
+                break;
+            case 15:
+                output += "fifteen ";
+                break;
+            case 16:
+                output += "sixteen ";
+                break;
+            case 17:
+                output += "seventeen ";
+                break;
+            case 18:
+                output += "eighteen ";
+                break;
+            case 19:
+                output += "nineteen ";
+                break;
+        }
+        return output;
+    }
+    function findOnes(int) {
+        switch (parseInt(int)) {
+            case 1:
+                output += "one ";
+                break;
+            case 2:
+                output += "two ";
+                break;
+            case 3:
+                output += "three ";
+                break;
+            case 4:
+                output += "four ";
+                break;
+            case 5:
+                output += "five ";
+                break;
+            case 6:
+                output += "six ";
+                break;
+            case 7:
+                output += "seven ";
+                break;
+            case 8:
+                output += "eight ";
+                break;
+            case 9:
+                output += "nine ";
+                break;
+        }
+        return output;
+    }
+    function display(output) {
+        document.getElementById("textOutput").innerHTML = output;
+    }
+</script>

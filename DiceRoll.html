@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <body onload="clearLog()">
+        <div class = "container">
+            <div>
+                <button onclick = "rolld4()">d4</button>
+                <button onclick = "rolld6()">d6</button>
+                <button onclick = "rolld10()">d10</button>
+                <button onclick = "rolld12()">d12</button>
+                <button onclick = "rolld20()">d20</button>
+                <button onclick = "rolld100()">d100</button>
+                <button onclick = "clearLog()">clear</button>
+            </div>
+            <p>Select a dice to roll of clear the log.</p>
+            <p id = "log"></p>
+        </div>
+    </body>
+</html>
+<style>
+    div.container{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    div.container button{
+        width: max-content;
+    }
+    p{
+        margin-top: 0%;
+        margin-bottom: 0%;
+    }
+</style>
+<script>
+    var output;
+    var date;
+    function clearLog(){
+        output = "";
+        document.getElementById("log").innerText = "";
+    }
+    function rolld4(){
+        output = "Rolled: " + rollDice(4) + "/4 " + getTimestamp();
+        display(output);
+    }
+    function rolld6(){
+        output = "Rolled: " + rollDice(6) + "/6 " + getTimestamp();
+        display(output);
+    }
+    function rolld10(){
+        output = "Rolled: " + rollDice(10) + "/10 " + getTimestamp();
+        display(output);
+    }
+    function rolld12(){
+        output = "Rolled: " + rollDice(12) + "/12 " + getTimestamp();
+        display(output);
+    }
+    function rolld20(){
+        output = "Rolled: " + rollDice(20) + "/20 " + getTimestamp();
+        display(output);
+    }
+    function rolld100(){
+        output = "Rolled: " + rollDice(100) + "/100 " + getTimestamp();
+        display(output);
+    }
+    function rollDice(i){
+        return Math.floor((Math.random() * i) + 1);
+    }
+    function getTimestamp(){
+        date = new Date()
+        return date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+    }
+    function display(output){
+        document.getElementById("log").innerText = output + "\n" + document.getElementById("log").innerText;
+    }
+</script>
